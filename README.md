@@ -1,14 +1,32 @@
 # mqtt-lite
 
 ## Introduction
-- refresh resource(css|js|img) in html of target folder
+- add timestemp query to tags'[script, style, link] attribute src in html, to refresh cache.
 
-## TODO
-1.
-
-#### API
-
-#### Usage
-```javascript
-
+## Installation
 ```
+$ npm install -g recache
+```
+
+## Usage
+```
+$ recache --help
+
+
+  Usage: recache [options] <dir>
+
+
+  Options:
+
+    -V, --version       output the version number
+    -t, --types <type>  recache file types, default is <script,style,link>
+    -q, --quiet <type>  recache will not print anything
+    -h, --help          output usage information
+```
+
+### Example
+- `recache -t script,style example`
+
+## evirenment
+- node `v6.10.0`
+
