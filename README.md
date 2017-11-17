@@ -12,14 +12,16 @@ $ npm install -g recache
 ```
 $ recache --help
 
+
   Usage: recache [options] <dir>
+
 
   Options:
 
+    -V, --version       output the version number
     -t, --types <type>  recache file types, default is <script,style,link>
     -q, --quiet <type>  recache will not print anything
     -h, --help          output usage information
-
 ```
 
 ### Example
@@ -27,3 +29,4 @@ $ recache --help
 
 ## evirenment
 - node `v6.10.0`
+
