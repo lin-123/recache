@@ -13,10 +13,10 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/lin-123/recache"
   },
   "bugs": {
-    "url": ""
+    "url": "https://github.com/lin-123/recache/issues"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
