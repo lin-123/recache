@@ -5,7 +5,7 @@
 
 ## Installation
 ```
-$ npm install -g recache
+$ npm install -g recache-files
 ```
 
 ## Usage

@@ -1,5 +1,5 @@
 {
-  "name": "recache",
+  "name": "recache-files",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
@@ -39,6 +39,8 @@
   },
   "keywords": [
     "html",
+    "refresh cache",
     "recache"
   ]
 }
+

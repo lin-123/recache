@@ -16,7 +16,7 @@ class TypeRegex {
     return str.replace(this.regexp[type], this.replaceExpression)
   }
 
-  filterTypes(types) {
+  filterTypes(types = 'script,style,link') {
     return types.split(',').reduce((pre, type)=>{
       if(this.regexp[type]) pre.push(type);
       return pre

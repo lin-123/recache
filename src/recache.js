@@ -10,9 +10,10 @@ class Recache{
 
   findFiles(targetPath, types, quiet) {
     fs.readdir(targetPath, (err, files) => {
+      let replaceFileCount = 0
       files.forEach(file=>{
         if(!/.html$/.test(file)) return;
-
+        replaceFileCount++
         const tail = `${targetPath}/${file}`
         return fs.readFile(tail, 'utf8', (err, data) => {
           if (err) throw err;
@@ -24,6 +25,8 @@ class Recache{
           })
         })
       })
+      if(replaceFileCount === 0)
+        console.log('no file replaced')
     })
   }
 }
