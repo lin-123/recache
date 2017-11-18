@@ -8,12 +8,13 @@ class TypeRegex {
       style: new RegExp(`(<style\\s.*src=[\\"|\\'])${srcUrl}([\\"|\\']\\s*.*><\\/style>)`, 'g'),
       link: new RegExp(`(<link\\s*.*href=[\\"\\'])${srcUrl}([\\"\\']\\s*.*>)`, 'g'),
     }
-    this.replaceExpression = `$1$2?t=${Date.now()}$4`
+
+    this.replaceExpression = () => `$1$2?t=${Date.now()}$4`
   }
 
   replace(str, type) {
     if(!this.regexp[type]) return str;
-    return str.replace(this.regexp[type], this.replaceExpression)
+    return str.replace(this.regexp[type], this.replaceExpression())
   }
 
   filterTypes(types) {
