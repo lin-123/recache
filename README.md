@@ -1,5 +1,3 @@
-# mqtt-lite
-
 ## Introduction
 - add timestemp query to tags'[script, style, link] attribute src in html, to refresh cache.
 
