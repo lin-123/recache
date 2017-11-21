@@ -22,6 +22,19 @@ describe('typeRegex', () => {
       const replacedStr = typeRegex.replace(str, 'script')
       expect(replacedStr).toEqual(`<script type="text/javascript" src="../dist/index.min.js?t=${timestemp}"></script>`)
     })
+
+    it('replace script tag, the tag src is x.js', () => {
+      const str = `<script type="text/javascript" src="x.js"></script>`
+      const replacedStr = typeRegex.replace(str, 'script')
+      expect(replacedStr).toEqual(`<script type="text/javascript" src="x.js?t=${timestemp}"></script>`)
+    })
+
+    it('replace link tag, the tag href is x', () => {
+      const str = `<link rel="stylesheet" type="text/css" href="asdf.css?t=">`
+      const replacedStr = typeRegex.replace(str, 'link')
+      expect(replacedStr).toEqual(`<link rel="stylesheet" type="text/css" href="asdf.css?t=${timestemp}">`)
+    })
+
   })
 
   describe('filterTypes', () => {
