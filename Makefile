@@ -1,4 +1,4 @@
- .PHONY: test clean
+ .PHONY: test clean unit e2e
 
 refresh:
 	DIR=example refresh-cache
@@ -8,12 +8,6 @@ dev:
 
 build:
 	NODE_ENV=production webpack
-
-analyze:
-	ANALYZE=true webpack
-
-umd:
-	webpack --config example/webpack.umd.js --watch
 
 publish: build
 	npm publish
