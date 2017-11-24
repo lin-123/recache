@@ -11,15 +11,16 @@ $ npm install -g recache-files
 $ recache --help
 
 
-  Usage: recache [options] <dir>
+Usage: recache [options] <dir>
 
 
   Options:
 
-    -V, --version       output the version number
-    -t, --types <type>  recache file types, default is <script,style,link>
-    -q, --quiet <type>  recache will not print anything
-    -h, --help          output usage information
+    -V, --version         output the version number
+    -t, --types <type>    recache file types, default is <script,style,link>
+    -q, --quiet <type>    recache will not print anything
+    -r, --restore <type>  remove t=timestemp from files
+    -h, --help            output usage information
 ```
 
 ### Example

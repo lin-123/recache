@@ -3,12 +3,18 @@ const path = require('path')
 const typeRegex = require('./typeRegex')
 
 class Recache{
-  constructor(dir, {types, quiet=false}){
-    const targetPath = path.join(process.env.PWD, dir)
-    this.findFiles(targetPath, typeRegex.filterTypes(types), quiet)
+  constructor(dir, {types, quiet=false, restore=false}){
+    this.targetPath = path.join(process.env.PWD, dir)
+    this.option ={
+      quiet,
+      types: typeRegex.filterTypes(types),
+      replaceReg: restore?'restore':'replace'
+    }
+    this._handleFiles()
   }
 
-  findFiles(targetPath, types, quiet) {
+  _handleFiles() {
+    const {targetPath, option: {types, quiet, replaceReg} } = this
     fs.readdir(targetPath, (err, files) => {
       let replaceFileCount = 0
       files.forEach(file=>{
@@ -17,7 +23,7 @@ class Recache{
         const tail = `${targetPath}/${file}`
         return fs.readFile(tail, 'utf8', (err, data) => {
           if (err) throw err;
-          const str = types.reduce((pre, type)=> typeRegex.replace(pre, type), data)
+          const str = types.reduce((pre, type)=> typeRegex[replaceReg](pre, type), data)
 
           fs.writeFile(tail, str, (err) => {
             if (err) throw err;
@@ -29,6 +35,7 @@ class Recache{
         console.log('no file replaced')
     })
   }
+
 }
 
 module.exports = Recache

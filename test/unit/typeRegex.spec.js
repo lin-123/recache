@@ -42,4 +42,12 @@ describe('typeRegex', () => {
       expect(typeRegex.filterTypes('script,css')).toEqual(['script'])
     })
   })
+
+  describe('restore', () => {
+    it('replace script tag, remove t=timestemp from src', () => {
+      const str = `<script type="text/javascript" src="x.js?t=123213"></script>`
+      const replacedStr = typeRegex.restore(str, 'script')
+      expect(replacedStr).toEqual(`<script type="text/javascript" src="x.js"></script>`)
+    })
+  })
 })

@@ -8,6 +8,7 @@ program.arguments('<dir>')
        .version(version)
        .option('-t, --types <type>', 'recache file types, default is <script,style,link>')
        .option('-q, --quiet <type>', 'recache will not print anything')
+       .option('-r, --restore <type>', 'remove t=timestemp from files')
        .action(function(dir) {
         new Recache(dir, program)
        })
