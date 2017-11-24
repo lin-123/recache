@@ -27,24 +27,20 @@ describe('recache', () => {
     }
 
     it('normal, just style will be repalce', (done) => {
-      new Recache(dir, {types: 'style,link', quiet: true})
+      const option = {types: 'style,link', quiet: true}
+      // add timestemp
+      new Recache(dir, option)
       getFileData((err, data) => {
         const reg = new RegExp(now, 'g')
         expect(data.match(reg).length).toEqual(2)
-        done()
-      })
-    })
 
-    it('normal, replaced style will be restore', (done) => {
-      new Recache(dir, {types: 'style', quiet: true})
-      setTimeout(() => {
-        new Recache(dir, {types: 'style', quiet: true, restore: true})
-      }, 10)
-
-      getFileData((err, data) => {
-        const reg = new RegExp(now, 'g')
-        expect(data.match(reg)).toEqual(null)
-        done()
+        // remove timestemp
+        new Recache(dir, {restore: true, ...option})
+        getFileData((err, data) => {
+          const reg = new RegExp(now, 'g')
+          expect(data.match(reg)).toEqual(null)
+          done()
+        })
       })
     })
   })
