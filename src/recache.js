@@ -4,7 +4,7 @@ const typeRegex = require('./typeRegex')
 
 class Recache{
   constructor(dir, {types, quiet=false, restore=false}){
-    this.targetPath = path.join(process.env.PWD, dir)
+    this.targetPath = path.join(process.env.PWD || process.cwd(), dir)
     this.option ={
       quiet,
       types: typeRegex.filterTypes(types),

@@ -1,7 +1,7 @@
 .PHONY: test clean unit e2e
 
 dev:
-	DIR=example node src/index.js
+	node src/index.js example
 
 publish:
 	npm publish
